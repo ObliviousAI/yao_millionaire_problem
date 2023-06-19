@@ -1,0 +1,28 @@
+auth:
+- auth_name: rsa_authentication
+  auth_type: signed_headers
+base_image: oblv_ubuntu_18_04_proxy_python_3_9
+build_args: []
+meta:
+  author: ObliviousAI
+  author_email: support@oblivious.ai
+  git: http://github.com/ObliviousAI/who_earns_more.git
+  version: 0.1.0
+paths:
+- access: millionaire
+  path: /income
+  short_description: to input the income
+- access: millionaire
+  path: /result
+  short_description: to get the result
+roles:
+- role_auth: rsa_authentication
+  role_cardinality: 10
+  role_description: users providing income
+  role_name: millionaire
+traffic:
+  inbound:
+  - name: inbound_traffic
+    port: 80
+    type: tcp
+  outbound: []
